@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::create([
+	'title'=>'testtitle',
+	'content'=>'testcontent'
+]);

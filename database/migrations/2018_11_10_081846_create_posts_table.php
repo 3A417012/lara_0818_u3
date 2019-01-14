@@ -15,7 +15,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('title', 500)->change();
+            $table->boolean('is_feature')->default(false)->after('content');
             $table->text('content');
             $table->timestamps();
         });
@@ -28,6 +29,9 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        //Schema::dropIfExists('posts');
+        $table ->string('title') ->change();
+        $table ->dropColumn('is_feature');
+
     }
 }
